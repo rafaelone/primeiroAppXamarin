@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using XF.Hello.App_Code;
 
 namespace XF.Hello
 {
@@ -14,7 +15,37 @@ namespace XF.Hello
 	{
 		public DataBindingPage ()
 		{
-			InitializeComponent ();
-		}
-	}
+            Aluno aluno = InitializarAluno();
+            Professor professor = InitializarProfessor();
+       
+
+
+          //  panelAluno.BindingContext = aluno;
+
+            InitializeComponent ();
+            panelAluno.BindingContext = aluno;
+            panelProfessor.BindingContext = professor;
+        }
+
+        private static Aluno InitializarAluno()
+        {
+            return new Aluno()
+            {
+
+                Id = Guid.NewGuid(),
+                Nome = "Rafael",
+                Email = "rafael@live.com"
+            };
+        }
+        
+        private static Professor InitializarProfessor()
+        {
+            return new Professor()
+            {
+                Nome = "Maria",
+                Curso = "Xamarin"
+            };
+        }
+
+    }
 }
